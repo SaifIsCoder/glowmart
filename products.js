@@ -4,7 +4,7 @@ let products = []; // Will be populated from Firebase
 let productsLoaded = false;
 
 // Import Firebase functions
-import { db, collection, getDocs, query, where } from './firebase/firebase.js';
+import { db, collection, getDocs, query, where } from '/firebase/firebase.js';
 
 // ==================== FETCH PRODUCTS FROM FIREBASE ====================
 async function fetchProductsFromFirebase() {
