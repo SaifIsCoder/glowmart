@@ -102,6 +102,7 @@ button:disabled {
   <button id="clearBtn" style="background: #dc3545;">Clear All Products (Danger!)</button>
 </div>
 
+<script src="js/seed-images.js"></script>
 <script type="module">
 import { db, collection, doc, setDoc, getDocs } from '/firebase/firebase.js';
 import { auth, createUserWithEmailAndPassword } from '/firebase/firebase.js';
@@ -262,10 +263,14 @@ seedBtn.addEventListener('click', async function() {
         }
         
         console.log('  📤 Uploading to Firestore...');
+        let imageSrc = product.image;
+        if (typeof window !== 'undefined' && window.SEED_IMAGES && window.SEED_IMAGES[product.image]) {
+          imageSrc = window.SEED_IMAGES[product.image];
+        }
         const productData = {
           name: product.name,
           price: product.price,
-          image: product.image,
+          image: imageSrc,
           category: product.category,
           createdAt: new Date().toISOString()
         };
